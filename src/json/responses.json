@@ -1,0 +1,329 @@
+[
+    {
+        "name": "KPI sales",
+        "request": {
+            "method": "POST",
+            "header": [
+                {
+                    "key": "apikey",
+                    "value": "{{apikey}}",
+                    "type": "text"
+                }
+            ],
+            "body": {
+                "mode": "raw",
+                "raw": "{\r\n  \"label\": \"sales\",\r\n  \"payload\": {\r\n    \"conversion_rate\": 0.05,\r\n    \"average_deal_size\": 2000,\r\n    \"sales_cycle_length\": 60,\r\n    \"pipeline_coverage\": 1.0,\r\n    \"win_rate\": 0.10,\r\n    \"lead_response_time\": 5\r\n  }\r\n}\r\n",
+                "options": {
+                    "raw": {
+                        "language": "json"
+                    }
+                }
+            },
+            "url": {
+                "raw": "{{baseURL}}/functions/v1/kpi-evaluator-model",
+                "host": [
+                    "{{baseURL}}"
+                ],
+                "path": [
+                    "functions",
+                    "v1",
+                    "kpi-evaluator-model"
+                ]
+            }
+        },
+        "response": {
+            "result": {
+                "success": true,
+                "label": "sales",
+                "score": 36,
+                "grade": "F",
+                "recommendations": [
+                    {
+                        "metric": "conversion_rate",
+                        "tool": "Breadcrumbs.io",
+                        "reason": "67% below target"
+                    },
+                    {
+                        "metric": "average_deal_size",
+                        "tool": "Clari",
+                        "reason": "60% below target"
+                    },
+                    {
+                        "metric": "sales_cycle_length",
+                        "tool": "Synthflow.ai",
+                        "reason": "100% above target"
+                    },
+                    {
+                        "metric": "pipeline_coverage",
+                        "tool": "Clari",
+                        "reason": "67% below target"
+                    },
+                    {
+                        "metric": "win_rate",
+                        "tool": "Breadcrumbs.io",
+                        "reason": "60% below target"
+                    },
+                    {
+                        "metric": "lead_response_time",
+                        "tool": "Synthflow.ai",
+                        "reason": "400% above target"
+                    }
+                ],
+                "data": {
+                    "conversion_rate": 0.05,
+                    "average_deal_size": 2000,
+                    "sales_cycle_length": 60,
+                    "pipeline_coverage": 1,
+                    "win_rate": 0.1,
+                    "lead_response_time": 5
+                }
+            },
+            "prompt": "You are an AI business analyst.\n\nDepartment: SALES\nOverall Score: 36/100\nPerformance Grade: F\n\nYour sales performance directly impacts revenue growth. Focus on improving lead conversion rates, deal sizes, and pipeline health to accelerate revenue.\n\nBased on the KPIs, these are the top performance concerns:\n- lead response time: 5 (target: 1, 400% above target)\n- sales cycle length: 60 (target: 30, 100% above target)\n- conversion rate: 0.05 (target: 0.15, 67% below target)\n\nRecommended AI Tools to help address these challenges:\n- **Breadcrumbs.io** (for conversion rate): 67% below target\n- **Clari** (for average deal size): 60% below target\n- **Synthflow.ai** (for sales cycle length): 100% above target\n- **Clari** (for pipeline coverage): 67% below target\n- **Breadcrumbs.io** (for win rate): 60% below target\n- **Synthflow.ai** (for lead response time): 400% above target\n\nProvide a concise summary that:\n1. Explains the main reasons for this department’s current performance score.\n2. Highlights what the weak KPIs reveal about operational challenges.\n3. Describes how the recommended AI tools could directly improve these outcomes.\n\nKeep the summary clear, insightful, under 200 words, and action-oriented.",
+            "summary": "The SALES department's overall score of 36/100 reflects significant operational inefficiencies that hinder revenue growth. Key performance indicators reveal critical issues: lead response time is 400% above target, the sales cycle length is 100% above target, and the conversion rate is 67% below target. These weaknesses indicate sluggish responses to leads, prolonged sales processes, and ineffective conversion strategies, all of which stifle potential revenue generation.\n\nTo address these challenges, the implementation of targeted AI tools is essential. **Breadcrumbs.io** can enhance lead conversion rates and win rates by optimizing follow-up strategies, ensuring timely responses to prospects. **Clari** will provide insights into average deal sizes and improve pipeline coverage, enabling better management of sales opportunities. Finally, **Synthflow.ai** will streamline the sales cycle, reducing delays and improving overall efficiency.\n\nBy leveraging these AI solutions, the SALES department can significantly enhance lead response times, shorten sales cycles, and boost conversion rates, ultimately driving revenue growth and transforming its performance grade."
+        }
+    },
+    {
+        "name": "KPI marketing",
+        "request": {
+            "method": "POST",
+            "header": [
+                {
+                    "key": "apikey",
+                    "value": "{{apikey}}",
+                    "type": "text"
+                }
+            ],
+            "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"label\": \"marketing\",\r\n    \"payload\": {\r\n        \"website_traffic\": 12000,\r\n        \"conversion_rate\": 0.01,\r\n        \"email_open_rate\": 0.15,\r\n        \"cost_per_lead\": 100,\r\n        \"marketing_qualified_leads\": 3,\r\n        \"organic_traffic\": 0.20\r\n    }\r\n}",
+                "options": {
+                    "raw": {
+                        "language": "json"
+                    }
+                }
+            },
+            "url": {
+                "raw": "{{baseURL}}/functions/v1/kpi-evaluator-model",
+                "host": [
+                    "{{baseURL}}"
+                ],
+                "path": [
+                    "functions",
+                    "v1",
+                    "kpi-evaluator-model"
+                ]
+            }
+        },
+        "response": {
+            "result": {
+                "success": true,
+                "label": "marketing",
+                "score": 41,
+                "grade": "F",
+                "recommendations": [
+                    {
+                        "metric": "website_traffic",
+                        "tool": "Personyze",
+                        "reason": "52% below target"
+                    },
+                    {
+                        "metric": "conversion_rate",
+                        "tool": "Clerk.io",
+                        "reason": "75% below target"
+                    },
+                    {
+                        "metric": "email_open_rate",
+                        "tool": "Recart",
+                        "reason": "50% below target"
+                    },
+                    {
+                        "metric": "cost_per_lead",
+                        "tool": "Clerk.io",
+                        "reason": "100% above target"
+                    },
+                    {
+                        "metric": "marketing_qualified_leads",
+                        "tool": "Breadcrumbs.io",
+                        "reason": "70% below target"
+                    },
+                    {
+                        "metric": "organic_traffic",
+                        "tool": "Personyze",
+                        "reason": "60% below target"
+                    }
+                ],
+                "data": {
+                    "website_traffic": 12000,
+                    "conversion_rate": 0.01,
+                    "email_open_rate": 0.15,
+                    "cost_per_lead": 100,
+                    "marketing_qualified_leads": 3,
+                    "organic_traffic": 0.2
+                }
+            },
+            "prompt": "You are an AI business analyst.\n\nDepartment: MARKETING\nOverall Score: 41/100\nPerformance Grade: F\n\nMarketing effectiveness drives top-of-funnel growth. Prioritize increasing lead conversions, reducing cost per lead, and expanding organic reach.\n\nBased on the KPIs, these are the top performance concerns:\n- cost per lead: 100 (target: 50, 100% above target)\n- conversion rate: 0.01 (target: 0.04, 75% below target)\n- marketing qualified leads: 3 (target: 10, 70% below target)\n\nRecommended AI Tools to help address these challenges:\n- **Personyze** (for website traffic): 52% below target\n- **Clerk.io** (for conversion rate): 75% below target\n- **Recart** (for email open rate): 50% below target\n- **Clerk.io** (for cost per lead): 100% above target\n- **Breadcrumbs.io** (for marketing qualified leads): 70% below target\n- **Personyze** (for organic traffic): 60% below target\n\nProvide a concise summary that:\n1. Explains the main reasons for this department’s current performance score.\n2. Highlights what the weak KPIs reveal about operational challenges.\n3. Describes how the recommended AI tools could directly improve these outcomes.\n\nKeep the summary clear, insightful, under 200 words, and action-oriented.",
+            "summary": "The Marketing Department's low performance score of 41/100 reflects significant operational challenges, primarily due to high cost per lead, weak conversion rates, and insufficient marketing qualified leads (MQLs). The cost per lead is at 100, double the target, while the conversion rate stands at a mere 0.01, 75% below the desired benchmark. Additionally, the department is generating only 3 MQLs, 70% short of its goal, indicating a failure to effectively engage and qualify potential customers.\n\nThese weak KPIs suggest inefficiencies in targeting, engagement strategies, and lead nurturing processes. To address these issues, the recommended AI tools can play a crucial role. **Personyze** can enhance website traffic and organic reach, driving more qualified visitors. **Clerk.io** is essential for improving conversion rates and reducing cost per lead by optimizing user experience and personalization. **Recart** can boost email open rates, enhancing lead engagement. Lastly, **Breadcrumbs.io** can help refine lead qualification, ensuring that the department generates more MQLs. Implementing these tools will not only streamline operations but also drive significant improvements in lead conversion and overall marketing effectiveness."
+        }
+    },
+    {
+        "name": "KPI customerService",
+        "request": {
+            "method": "POST",
+            "header": [
+                {
+                    "key": "apikey",
+                    "value": "{{apikey}}",
+                    "type": "text"
+                }
+            ],
+            "body": {
+                "mode": "raw",
+                "raw": "{\r\n  \"label\": \"customerService\",\r\n  \"payload\": {\r\n    \"customer_satisfaction_score\": 60,\r\n    \"nps\": -10,\r\n    \"first_response_time\": 4,\r\n    \"resolution_time\": 48,\r\n    \"ticket_backlog\": 20,\r\n    \"cost_per_ticket\": 20\r\n  }\r\n}\r\n",
+                "options": {
+                    "raw": {
+                        "language": "json"
+                    }
+                }
+            },
+            "url": {
+                "raw": "{{baseURL}}/functions/v1/kpi-evaluator-model",
+                "host": [
+                    "{{baseURL}}"
+                ],
+                "path": [
+                    "functions",
+                    "v1",
+                    "kpi-evaluator-model"
+                ]
+            }
+        },
+        "response": {
+            "result": {
+                "success": true,
+                "label": "customerService",
+                "score": 38,
+                "grade": "F",
+                "recommendations": [
+                    {
+                        "metric": "customer_satisfaction_score",
+                        "tool": "CustomGPT",
+                        "reason": "29% below target"
+                    },
+                    {
+                        "metric": "nps",
+                        "tool": "Tidio",
+                        "reason": "120% below target"
+                    },
+                    {
+                        "metric": "first_response_time",
+                        "tool": "Tidio",
+                        "reason": "300% above target"
+                    },
+                    {
+                        "metric": "resolution_time",
+                        "tool": "Tidio",
+                        "reason": "100% above target"
+                    },
+                    {
+                        "metric": "ticket_backlog",
+                        "tool": "CustomGPT",
+                        "reason": "100% above target"
+                    },
+                    {
+                        "metric": "cost_per_ticket",
+                        "tool": "CustomGPT",
+                        "reason": "100% above target"
+                    }
+                ],
+                "data": {
+                    "customer_satisfaction_score": 60,
+                    "nps": -10,
+                    "first_response_time": 4,
+                    "resolution_time": 48,
+                    "ticket_backlog": 20,
+                    "cost_per_ticket": 20
+                }
+            },
+            "prompt": "You are an AI business analyst.\n\nDepartment: CUSTOMERSERVICE\nOverall Score: 38/100\nPerformance Grade: F\n\nCustomer satisfaction influences loyalty and retention. Fast responses and high satisfaction scores lead to stronger client relationships.\n\nBased on the KPIs, these are the top performance concerns:\n- first response time: 4 (target: 1, 300% above target)\n- nps: -10 (target: 50, 120% below target)\n- resolution time: 48 (target: 24, 100% above target)\n\nRecommended AI Tools to help address these challenges:\n- **CustomGPT** (for customer satisfaction score): 29% below target\n- **Tidio** (for nps): 120% below target\n- **Tidio** (for first response time): 300% above target\n- **Tidio** (for resolution time): 100% above target\n- **CustomGPT** (for ticket backlog): 100% above target\n- **CustomGPT** (for cost per ticket): 100% above target\n\nProvide a concise summary that:\n1. Explains the main reasons for this department’s current performance score.\n2. Highlights what the weak KPIs reveal about operational challenges.\n3. Describes how the recommended AI tools could directly improve these outcomes.\n\nKeep the summary clear, insightful, under 200 words, and action-oriented.",
+            "summary": "The Customer Service department's performance score of 38/100 reflects significant operational challenges, primarily indicated by weak KPIs. The first response time is at 4 hours, drastically exceeding the target of 1 hour, which leads to delayed customer engagement. The Net Promoter Score (NPS) of -10, far below the target of 50, signals low customer satisfaction and potential loyalty issues. Additionally, the resolution time of 48 hours, double the target, indicates inefficiencies in addressing customer inquiries.\n\nTo address these challenges, implementing AI tools like **CustomGPT** and **Tidio** is crucial. **CustomGPT** can enhance customer satisfaction and manage ticket backlogs effectively, reducing resolution times and improving overall service efficiency. Meanwhile, **Tidio** can significantly speed up first response times and bolster NPS by providing quick, automated responses to common customer inquiries. By integrating these AI solutions, the department can streamline operations, improve customer interactions, and ultimately enhance loyalty and retention rates. Immediate action is necessary to reverse negative trends and achieve performance targets."
+        }
+    },
+    {
+        "name": "KPI finance",
+        "request": {
+            "method": "POST",
+            "header": [
+                {
+                    "key": "apikey",
+                    "value": "{{apikey}}",
+                    "type": "text"
+                }
+            ],
+            "body": {
+                "mode": "raw",
+                "raw": "{\r\n  \"label\": \"finance\",\r\n  \"payload\": {\r\n    \"accounts_receivable_aging\": 60,\r\n    \"budget_variance\": 10,\r\n    \"cost_per_invoice\": 6,\r\n    \"operating_cash_flow\": 3000,\r\n    \"expense_ratio\": 45,\r\n    \"forecast_accuracy\": 60\r\n  }\r\n}",
+                "options": {
+                    "raw": {
+                        "language": "json"
+                    }
+                }
+            },
+            "url": {
+                "raw": "{{baseURL}}/functions/v1/kpi-evaluator-model",
+                "host": [
+                    "{{baseURL}}"
+                ],
+                "path": [
+                    "functions",
+                    "v1",
+                    "kpi-evaluator-model"
+                ]
+            }
+        },
+        "response": {
+            "result": {
+                "success": true,
+                "label": "finance",
+                "score": 64,
+                "grade": "D",
+                "recommendations": [
+                    {
+                        "metric": "accounts_receivable_aging",
+                        "tool": "ChaserHQ",
+                        "reason": "100% above target"
+                    },
+                    {
+                        "metric": "budget_variance",
+                        "tool": "Veryfi",
+                        "reason": "100% above target"
+                    },
+                    {
+                        "metric": "cost_per_invoice",
+                        "tool": "Veryfi",
+                        "reason": "100% above target"
+                    },
+                    {
+                        "metric": "expense_ratio",
+                        "tool": "Veryfi",
+                        "reason": "50% above target"
+                    },
+                    {
+                        "metric": "forecast_accuracy",
+                        "tool": "Veryfi",
+                        "reason": "33% below target"
+                    }
+                ],
+                "data": {
+                    "accounts_receivable_aging": 60,
+                    "budget_variance": 10,
+                    "cost_per_invoice": 6,
+                    "operating_cash_flow": 3000,
+                    "expense_ratio": 45,
+                    "forecast_accuracy": 60
+                }
+            },
+            "prompt": "You are an AI business analyst.\n\nDepartment: FINANCE\nOverall Score: 64/100\nPerformance Grade: D\n\nFinancial stability ensures operational success. Emphasize reducing outstanding invoices, controlling costs, and improving forecast accuracy.\n\nBased on the KPIs, these are the top performance concerns:\n- accounts receivable aging: 60 (target: 30, 100% above target)\n- budget variance: 10 (target: 5, 100% above target)\n- cost per invoice: 6 (target: 3, 100% above target)\n\nRecommended AI Tools to help address these challenges:\n- **ChaserHQ** (for accounts receivable aging): 100% above target\n- **Veryfi** (for budget variance): 100% above target\n- **Veryfi** (for cost per invoice): 100% above target\n- **Veryfi** (for expense ratio): 50% above target\n- **Veryfi** (for forecast accuracy): 33% below target\n\nProvide a concise summary that:\n1. Explains the main reasons for this department’s current performance score.\n2. Highlights what the weak KPIs reveal about operational challenges.\n3. Describes how the recommended AI tools could directly improve these outcomes.\n\nKeep the summary clear, insightful, under 200 words, and action-oriented.",
+            "summary": "The Finance Department's performance score of 64/100 reflects significant challenges in key operational areas, primarily driven by high accounts receivable aging, budget variance, and cost per invoice, all exceeding targets by 100%. These weak KPIs indicate inefficient cash flow management, ineffective budgeting processes, and elevated operational costs, jeopardizing financial stability.\n\nTo address these pressing issues, implementing AI tools can streamline operations and enhance accuracy. **ChaserHQ** can automate follow-ups on outstanding invoices, significantly reducing accounts receivable aging and improving cash flow management. **Veryfi** can facilitate tighter budget control and lower costs per invoice by automating expense tracking and providing real-time insights into financial performance. Additionally, while **Veryfi** shows room for improvement in forecast accuracy and expense ratio, its capabilities can still drive better financial planning and resource allocation.\n\nBy leveraging these AI solutions, the Finance Department can enhance its operational efficiency, stabilize its financial standing, and ultimately improve its performance score. Immediate action is essential to reverse the current trend and position the department for future success."
+        }
+    }
+]

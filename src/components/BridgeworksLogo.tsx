@@ -1,0 +1,5 @@
+import { cn } from "@/lib/utils";
+
+export function BridgeworksLogo({ className }: { className?: string }) {
+  return <img src="https://d64gsuwffb70l.cloudfront.net/685071830dd0eeadcb87ae15_1759418245647_5b9c356a.png" alt="Bridgeworks AI" className={cn('h-12 w-auto', className)} data-editor-uid="66721ccc-34bd-41af-8790-d92971626fb4" data-editor-name="img" data-component-path="src/components/BridgeworksLogo.tsx" data-component-line="3" data-static="true" data-editor-content="%7B%22text%22%3A%22Bridgeworks%20AI%22%2C%22className%22%3A%22h-12%20w-auto%22%7D" />;
+}
