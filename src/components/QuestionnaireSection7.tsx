@@ -2,11 +2,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { useQuestionnaire } from '@/context/QuestionnaireContext';
 
-const QuestionnaireSection7 = () => {
-  const { data, updateField, toggleOption } = useQuestionnaire();
+interface QuestionnaireSection7Props {
+  formData: any;
+  setFormData: (data: any) => void;
+  handleCheckboxChange: (field: string, value: string, checked: boolean) => void;
+}
 
+const QuestionnaireSection7 = ({ formData, setFormData, handleCheckboxChange }: QuestionnaireSection7Props) => {
   return (
     <Card>
       <CardHeader>
@@ -16,8 +19,8 @@ const QuestionnaireSection7 = () => {
         <div>
           <Label>Do you manage employee recruitment or training in-house?</Label>
           <RadioGroup
-            value={data.hrManagement}
-            onValueChange={(value) => updateField('hrManagement', value)}
+            value={formData.hrManagement}
+            onValueChange={(value) => setFormData({...formData, hrManagement: value})}
           >
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="yes" id="hr-yes" />
@@ -41,8 +44,8 @@ const QuestionnaireSection7 = () => {
               <div key={option} className="flex items-center space-x-2">
                 <Checkbox
                   id={option}
-                  checked={data.hrAI.includes(option)}
-                  onCheckedChange={(checked) => toggleOption('hrAI', option, Boolean(checked))}
+                  checked={(formData.hrAI as string[]).includes(option)}
+                  onCheckedChange={(checked) => handleCheckboxChange('hrAI', option, checked as boolean)}
                 />
                 <Label htmlFor={option}>{option}</Label>
               </div>

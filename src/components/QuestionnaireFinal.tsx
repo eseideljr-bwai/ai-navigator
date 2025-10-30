@@ -1,11 +1,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { useQuestionnaire } from '@/context/QuestionnaireContext';
 
-const QuestionnaireFinal = () => {
-  const { data, updateField } = useQuestionnaire();
+interface QuestionnaireFinalProps {
+  formData: any;
+  setFormData: (data: any) => void;
+}
 
+const QuestionnaireFinal = ({ formData, setFormData }: QuestionnaireFinalProps) => {
   return (
     <Card className="border-green-200">
       <CardHeader>
@@ -15,8 +17,8 @@ const QuestionnaireFinal = () => {
         <div>
           <Label>What's your #1 goal with AI?</Label>
           <RadioGroup
-            value={data.aiGoal}
-            onValueChange={(value) => updateField('aiGoal', value)}
+            value={formData.aiGoal}
+            onValueChange={(value) => setFormData({...formData, aiGoal: value})}
           >
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="reduce-costs" id="reduce-costs" />
@@ -44,8 +46,8 @@ const QuestionnaireFinal = () => {
         <div>
           <Label>Would you like Bridgeworks engineers to assist with setup and integration?</Label>
           <RadioGroup
-            value={data.implementation}
-            onValueChange={(value) => updateField('implementation', value)}
+            value={formData.implementation}
+            onValueChange={(value) => setFormData({...formData, implementation: value})}
           >
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="full" id="full" />
