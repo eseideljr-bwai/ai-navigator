@@ -2,11 +2,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { useQuestionnaire } from '@/context/QuestionnaireContext';
+import { Textarea } from '@/components/ui/textarea';
 
-const QuestionnaireSection5 = () => {
-  const { data, updateField, toggleOption } = useQuestionnaire();
+interface QuestionnaireSection5Props {
+  formData: any;
+  setFormData: (data: any) => void;
+  handleCheckboxChange: (field: string, value: string, checked: boolean) => void;
+}
 
+const QuestionnaireSection5 = ({ formData, setFormData, handleCheckboxChange }: QuestionnaireSection5Props) => {
   return (
     <Card>
       <CardHeader>
@@ -20,8 +24,8 @@ const QuestionnaireSection5 = () => {
               <div key={option} className="flex items-center space-x-2">
                 <Checkbox
                   id={option}
-                  checked={data.manualTasks.includes(option)}
-                  onCheckedChange={(checked) => toggleOption('manualTasks', option, Boolean(checked))}
+                  checked={(formData.manualTasks as string[]).includes(option)}
+                  onCheckedChange={(checked) => handleCheckboxChange('manualTasks', option, checked as boolean)}
                 />
                 <Label htmlFor={option}>{option}</Label>
               </div>
@@ -32,8 +36,8 @@ const QuestionnaireSection5 = () => {
         <div>
           <Label>Would you like help automating these tasks or getting recommendations?</Label>
           <RadioGroup
-            value={data.automationHelp}
-            onValueChange={(value) => updateField('automationHelp', value)}
+            value={formData.automationHelp}
+            onValueChange={(value) => setFormData({...formData, automationHelp: value})}
           >
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="yes" id="automation-yes" />

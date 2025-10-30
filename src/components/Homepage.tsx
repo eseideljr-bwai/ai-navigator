@@ -6,6 +6,7 @@ import ProductsBlock from './ProductsBlock';
 import BenefitsSection from './BenefitsSection';
 import WhyBridgeworksSection from './WhyBridgeworksSection';
 
+
 const Homepage: React.FC = () => {
   return (
     <div className="min-h-screen">
@@ -15,9 +16,9 @@ const Homepage: React.FC = () => {
       <ProductsBlock />
       <BenefitsSection />
       <WhyBridgeworksSection />
+
     </div>
   );
 };
 
 export default Homepage;
-

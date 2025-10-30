@@ -214,15 +214,7 @@ const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode; titl
   </div>
 );
 
-interface ProductCardProps {
-  image: string
-  title: string
-  description: string
-  bullets: string[]
-  onLearnMore: () => void
-}
-
-const ProductCard = ({ image, title, description, bullets, onLearnMore }: ProductCardProps) => (
+const ProductCard = ({ image, title, description, bullets, onLearnMore }: any) => (
   <Card className="overflow-hidden hover:shadow-lg transition-shadow">
     <img src={image} alt={title} className="w-full h-48 object-cover" />
     <CardContent className="p-6">

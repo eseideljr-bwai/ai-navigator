@@ -34,12 +34,12 @@ export const usePageMeta = ({ title, description, keywords }: PageMetaProps) => 
     }
 
     // Update OG tags
-    const ogTitle = document.querySelector('meta[property="og:title"]');
+    let ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
       ogTitle.setAttribute('content', title);
     }
 
-    const ogDescription = document.querySelector('meta[property="og:description"]');
+    let ogDescription = document.querySelector('meta[property="og:description"]');
     if (ogDescription) {
       ogDescription.setAttribute('content', description);
     }

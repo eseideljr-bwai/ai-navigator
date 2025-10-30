@@ -13,6 +13,8 @@ import Pricing from "./pages/Pricing";
 import Products from "./pages/Products";
 import ContactUs from "./pages/ContactUs";
 import HomeAlternate from "./pages/HomeAlternate";
+import IndexAI from "./pages/IndexAI";
+
 
 
 import Questionnaire from "./pages/Questionnaire";
@@ -20,8 +22,6 @@ import QuizResults from "./pages/QuizResults";
 
 
 import NotFound from "./pages/NotFound";
-import { QuestionnaireProvider } from "@/context/QuestionnaireContext";
-import { KpiResultsProvider } from "@/context/KpiResultsContext";
 
 
 const queryClient = new QueryClient();
@@ -33,27 +33,27 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <QuestionnaireProvider>
-            <KpiResultsProvider>
-              <ScrollToTop />
+          <ScrollToTop />
 
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/solutions" element={<Solutions />} />
-                <Route path="/how-it-works" element={<HowItWorks />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/pricing" element={<Pricing />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/contact-us" element={<ContactUs />} />
-                <Route path="/home-alternate" element={<HomeAlternate />} />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/solutions" element={<Solutions />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/home-alternate" element={<HomeAlternate />} />
+            <Route path="/indexai" element={<IndexAI />} />
 
-                <Route path="/questionnaire" element={<Questionnaire />} />
-                <Route path="/quiz-results" element={<QuizResults />} />
 
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </KpiResultsProvider>
-          </QuestionnaireProvider>
+
+            <Route path="/questionnaire" element={<Questionnaire />} />
+            <Route path="/quiz-results" element={<QuizResults />} />
+
+
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

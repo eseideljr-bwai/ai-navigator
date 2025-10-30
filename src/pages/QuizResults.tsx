@@ -1,47 +1,42 @@
 import { BridgeworksLogo } from '@/components/BridgeworksLogo';
 import OverallScoreSummary from '@/components/OverallScoreSummary';
 import DepartmentResult from '@/components/DepartmentResult';
-import { useQuestionnaire } from '@/context/QuestionnaireContext';
-import { useKpiResults } from '@/context/KpiResultsContext';
-import type { KpiResultsState } from '@/context/KpiResultsContext';
 
 const QuizResults = () => {
-  const { data } = useQuestionnaire();
-  const { results } = useKpiResults();
   const salesMetrics = [
-    { metric: 'Conversion Rate', yourValue: `${data.conversionRate}%`, target: '15%', direction: 'higher' as const },
-    { metric: 'Average Deal Size', yourValue: `$${data.averageDealSize}`, target: '$5,000', direction: 'higher' as const },
-    { metric: 'Sales Cycle Length', yourValue: `${data.salesCycleLength} days`, target: '30 days', direction: 'lower' as const },
-    { metric: 'Pipeline Coverage', yourValue: `${data.pipelineCoverage}x`, target: '3.0x', direction: 'higher' as const },
-    { metric: 'Win Rate', yourValue: `${data.winRate}%`, target: '25%', direction: 'higher' as const },
-    { metric: 'Lead Response Time', yourValue: `${data.leadResponseTime} hrs`, target: '1 hr', direction: 'lower' as const }
+    { metric: 'Conversion Rate', yourValue: '5%', target: '15%', direction: 'higher' as const },
+    { metric: 'Average Deal Size', yourValue: '$2,000', target: '$5,000', direction: 'higher' as const },
+    { metric: 'Sales Cycle Length', yourValue: '60 days', target: '30 days', direction: 'lower' as const },
+    { metric: 'Pipeline Coverage', yourValue: '1.0x', target: '3.0x', direction: 'higher' as const },
+    { metric: 'Win Rate', yourValue: '10%', target: '25%', direction: 'higher' as const },
+    { metric: 'Lead Response Time', yourValue: '5 hrs', target: '1 hr', direction: 'lower' as const }
   ];
 
   const marketingMetrics = [
-    { metric: 'Website Traffic', yourValue: `${data.websiteTraffic} / mo`, target: '25,000 / mo', direction: 'higher' as const },
-    { metric: 'Conversion Rate', yourValue: `${data.marketingConversionRate}%`, target: '4%', direction: 'higher' as const },
-    { metric: 'Email Open Rate', yourValue: `${data.emailOpenRate}%`, target: '30%', direction: 'higher' as const },
-    { metric: 'Cost Per Lead', yourValue: `$${data.costPerLead}`, target: '$50', direction: 'lower' as const },
-    { metric: 'Marketing Qualified Leads', yourValue: `${data.marketingQualifiedLeads}% growth`, target: '10% growth', direction: 'higher' as const },
-    { metric: 'Organic Traffic Share', yourValue: `${data.organicTrafficShare}%`, target: '50%', direction: 'higher' as const }
+    { metric: 'Website Traffic', yourValue: '12,000 / mo', target: '25,000 / mo', direction: 'higher' as const },
+    { metric: 'Conversion Rate', yourValue: '1%', target: '4%', direction: 'higher' as const },
+    { metric: 'Email Open Rate', yourValue: '15%', target: '30%', direction: 'higher' as const },
+    { metric: 'Cost Per Lead', yourValue: '$100', target: '$50', direction: 'lower' as const },
+    { metric: 'Marketing Qualified Leads', yourValue: '3% growth', target: '10% growth', direction: 'higher' as const },
+    { metric: 'Organic Traffic Share', yourValue: '20%', target: '50%', direction: 'higher' as const }
   ];
 
   const customerServiceMetrics = [
-    { metric: 'Customer Satisfaction', yourValue: `${data.customerSatisfactionScore}%`, target: '85%', direction: 'higher' as const },
-    { metric: 'Net Promoter Score (NPS)', yourValue: `${data.netPromoterScore}`, target: '+50', direction: 'higher' as const },
-    { metric: 'First Response Time', yourValue: `${data.firstResponseTime} hrs`, target: '1 hr', direction: 'lower' as const },
-    { metric: 'Resolution Time', yourValue: `${data.resolutionTime} hrs`, target: '24 hrs', direction: 'lower' as const },
-    { metric: 'Ticket Backlog', yourValue: `${data.ticketBacklog}`, target: '10', direction: 'lower' as const },
-    { metric: 'Cost per Ticket', yourValue: `$${data.costPerTicket}`, target: '$10', direction: 'lower' as const }
+    { metric: 'Customer Satisfaction', yourValue: '60%', target: '85%', direction: 'higher' as const },
+    { metric: 'Net Promoter Score (NPS)', yourValue: '-10', target: '+50', direction: 'higher' as const },
+    { metric: 'First Response Time', yourValue: '4 hrs', target: '1 hr', direction: 'lower' as const },
+    { metric: 'Resolution Time', yourValue: '48 hrs', target: '24 hrs', direction: 'lower' as const },
+    { metric: 'Ticket Backlog', yourValue: '20', target: '10', direction: 'lower' as const },
+    { metric: 'Cost per Ticket', yourValue: '$20', target: '$10', direction: 'lower' as const }
   ];
 
   const financeMetrics = [
-    { metric: 'Accounts Receivable Aging', yourValue: `${data.accountsReceivableAging} days`, target: '30 days', direction: 'lower' as const },
-    { metric: 'Budget Variance', yourValue: `${data.budgetVariance}`, target: '±5%', direction: 'lower' as const },
-    { metric: 'Cost per Invoice', yourValue: `$${data.costPerInvoice}`, target: '$3', direction: 'lower' as const },
-    { metric: 'Operating Cash Flow', yourValue: `$${data.operatingCashFlow}`, target: 'Positive trend', direction: 'higher' as const },
-    { metric: 'Expense Ratio', yourValue: `${data.expenseRatio}`, target: '30%', direction: 'lower' as const },
-    { metric: 'Forecast Accuracy', yourValue: `${data.forecastAccuracy}`, target: '90%', direction: 'higher' as const }
+    { metric: 'Accounts Receivable Aging', yourValue: '60 days', target: '30 days', direction: 'lower' as const },
+    { metric: 'Budget Variance', yourValue: '10%', target: '±5%', direction: 'lower' as const },
+    { metric: 'Cost per Invoice', yourValue: '$6', target: '$3', direction: 'lower' as const },
+    { metric: 'Operating Cash Flow', yourValue: '$3,000', target: 'Positive trend', direction: 'higher' as const },
+    { metric: 'Expense Ratio', yourValue: '45%', target: '30%', direction: 'lower' as const },
+    { metric: 'Forecast Accuracy', yourValue: '60%', target: '90%', direction: 'higher' as const }
   ];
 
   return (
@@ -73,7 +68,7 @@ const QuizResults = () => {
             grade="B-"
             gradeColor="text-yellow-600"
             metrics={salesMetrics}
-            summary={renderSummary(results.sales)}
+            summary="Your team has consistent deal flow but slow response times and long sales cycles are reducing win rates."
             recommendations={[
               'Automate lead follow-ups within one hour.',
               'Score and prioritize leads by engagement level.',
@@ -88,7 +83,7 @@ const QuizResults = () => {
             grade="C+"
             gradeColor="text-orange-600"
             metrics={marketingMetrics}
-            summary={renderSummary(results.marketing)}
+            summary="You're generating good awareness but not converting efficiently. Campaigns and pages lack optimization and automation."
             recommendations={[
               'Personalize content for top traffic sources.',
               'Test new value propositions on landing pages.',
@@ -103,7 +98,7 @@ const QuizResults = () => {
             grade="C"
             gradeColor="text-orange-600"
             metrics={customerServiceMetrics}
-            summary={renderSummary(results.customerService)}
+            summary="Support quality is steady but constrained by delayed first responses and manual routing. AI assistance can relieve pressure and speed up turnaround."
             recommendations={[
               'Add an AI-powered chat agent to handle FAQs and route tickets.',
               'Track customer sentiment in real time.',
@@ -118,7 +113,7 @@ const QuizResults = () => {
             grade="C"
             gradeColor="text-orange-600"
             metrics={financeMetrics}
-            summary={renderSummary(results.finance)}
+            summary="Strong revenue but cash flow delays and expense inefficiencies are limiting growth capacity."
             recommendations={[
               'Automate invoice follow-ups and reminders.',
               'Use AI tools to track budget variance trends.',
@@ -134,26 +129,3 @@ const QuizResults = () => {
 };
 
 export default QuizResults;
-
-function renderSummary(entry: KpiResultsState[keyof KpiResultsState]) {
-  if (!entry || entry.status === 'idle') {
-    return 'No data submitted yet.';
-  }
-
-  if (entry.status === 'loading') {
-    return 'Generating summary...';
-  }
-
-  if (entry.status === 'error') {
-    return entry.error ?? 'Unable to fetch KPI evaluation.';
-  }
-
-  if (entry.status === 'success' && entry.data) {
-    const content = entry.data.summary || entry.data.prompt || JSON.stringify(entry.data, null, 2);
-    return (
-      <p className="whitespace-pre-wrap break-words text-sm text-gray-700">{content}</p>
-    );
-  }
-
-  return 'Awaiting evaluation results.';
-}

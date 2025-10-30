@@ -3,12 +3,14 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { useQuestionnaire } from '@/context/QuestionnaireContext';
 
-const QuestionnaireSection3 = () => {
-  const { data, updateField, toggleOption, errors } = useQuestionnaire();
-  const getError = (field: keyof typeof data) => errors[field];
+interface QuestionnaireSection3Props {
+  formData: any;
+  setFormData: (data: any) => void;
+  handleCheckboxChange: (field: string, value: string, checked: boolean) => void;
+}
 
+const QuestionnaireSection3 = ({ formData, setFormData, handleCheckboxChange }: QuestionnaireSection3Props) => {
   return (
     <Card>
       <CardHeader>
@@ -18,8 +20,8 @@ const QuestionnaireSection3 = () => {
         <div>
           <Label>Do you run digital marketing campaigns?</Label>
           <RadioGroup
-            value={data.marketingCampaigns}
-            onValueChange={(value) => updateField('marketingCampaigns', value)}
+            value={formData.marketingCampaigns}
+            onValueChange={(value) => setFormData({...formData, marketingCampaigns: value})}
           >
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="yes-inhouse" id="yes-inhouse" />
@@ -44,78 +46,60 @@ const QuestionnaireSection3 = () => {
               <Input
                 id="websiteTraffic"
                 type="number"
-                value={data.websiteTraffic}
-                onChange={(event) => updateField('websiteTraffic', event.target.value)}
+                value={formData.websiteTraffic}
+                onChange={(e) => setFormData({...formData, websiteTraffic: e.target.value})}
                 placeholder="e.g., 10000"
               />
-              {getError('websiteTraffic') ? (
-                <p className="text-sm text-destructive mt-1">{getError('websiteTraffic')}</p>
-              ) : null}
             </div>
             <div>
               <Label htmlFor="marketingConversionRate">Conversion Rate (%):</Label>
               <Input
                 id="marketingConversionRate"
                 type="number"
-                value={data.marketingConversionRate}
-                onChange={(event) => updateField('marketingConversionRate', event.target.value)}
+                value={formData.marketingConversionRate}
+                onChange={(e) => setFormData({...formData, marketingConversionRate: e.target.value})}
                 placeholder="e.g., 3"
               />
-              {getError('marketingConversionRate') ? (
-                <p className="text-sm text-destructive mt-1">{getError('marketingConversionRate')}</p>
-              ) : null}
             </div>
             <div>
               <Label htmlFor="emailOpenRate">Email Open Rate (%):</Label>
               <Input
                 id="emailOpenRate"
                 type="number"
-                value={data.emailOpenRate}
-                onChange={(event) => updateField('emailOpenRate', event.target.value)}
+                value={formData.emailOpenRate}
+                onChange={(e) => setFormData({...formData, emailOpenRate: e.target.value})}
                 placeholder="e.g., 22"
               />
-              {getError('emailOpenRate') ? (
-                <p className="text-sm text-destructive mt-1">{getError('emailOpenRate')}</p>
-              ) : null}
             </div>
             <div>
               <Label htmlFor="costPerLead">Cost per Lead ($):</Label>
               <Input
                 id="costPerLead"
                 type="number"
-                value={data.costPerLead}
-                onChange={(event) => updateField('costPerLead', event.target.value)}
+                value={formData.costPerLead}
+                onChange={(e) => setFormData({...formData, costPerLead: e.target.value})}
                 placeholder="e.g., 50"
               />
-              {getError('costPerLead') ? (
-                <p className="text-sm text-destructive mt-1">{getError('costPerLead')}</p>
-              ) : null}
             </div>
             <div>
               <Label htmlFor="marketingQualifiedLeads">Marketing Qualified Leads (# per month):</Label>
               <Input
                 id="marketingQualifiedLeads"
                 type="number"
-                value={data.marketingQualifiedLeads}
-                onChange={(event) => updateField('marketingQualifiedLeads', event.target.value)}
+                value={formData.marketingQualifiedLeads}
+                onChange={(e) => setFormData({...formData, marketingQualifiedLeads: e.target.value})}
                 placeholder="e.g., 100"
               />
-              {getError('marketingQualifiedLeads') ? (
-                <p className="text-sm text-destructive mt-1">{getError('marketingQualifiedLeads')}</p>
-              ) : null}
             </div>
             <div>
               <Label htmlFor="organicTrafficShare">Organic Traffic Share (%):</Label>
               <Input
                 id="organicTrafficShare"
                 type="number"
-                value={data.organicTrafficShare}
-                onChange={(event) => updateField('organicTrafficShare', event.target.value)}
+                value={formData.organicTrafficShare}
+                onChange={(e) => setFormData({...formData, organicTrafficShare: e.target.value})}
                 placeholder="e.g., 40"
               />
-              {getError('organicTrafficShare') ? (
-                <p className="text-sm text-destructive mt-1">{getError('organicTrafficShare')}</p>
-              ) : null}
             </div>
           </div>
         </div>
@@ -127,8 +111,8 @@ const QuestionnaireSection3 = () => {
               <div key={option} className="flex items-center space-x-2">
                 <Checkbox
                   id={option}
-                  checked={data.marketingAI.includes(option)}
-                  onCheckedChange={(checked) => toggleOption('marketingAI', option, Boolean(checked))}
+                  checked={(formData.marketingAI as string[]).includes(option)}
+                  onCheckedChange={(checked) => handleCheckboxChange('marketingAI', option, checked as boolean)}
                 />
                 <Label htmlFor={option}>{option}</Label>
               </div>

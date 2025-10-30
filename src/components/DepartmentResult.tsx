@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import KPITable from './KPITable';
-import React from 'react';
 
 interface KPIMetric {
   metric: string;
@@ -15,7 +14,7 @@ interface DepartmentResultProps {
   grade: string;
   gradeColor: string;
   metrics: KPIMetric[];
-  summary: React.ReactNode;
+  summary: string;
   recommendations: string[];
   suggestedTool: string;
   toolDescription: string;
